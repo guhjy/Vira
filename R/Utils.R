@@ -27,6 +27,7 @@
 #' @importFrom PresenceAbsence presence.absence.accuracy
 #' @importFrom PresenceAbsence predicted.prevalence
 #' @importFrom plyr dlply
+#' @importFrom plyr ddply
 #' @importFrom caret confusionMatrix
 
 # 
