@@ -20,7 +20,7 @@ $(function(){
 			};
 		});
 		
-		//RPC request to score data
+		//RPC request to score new data
 		var req = ocpu.rpc("predRiskScore", {input : data}, function(output){
 			//repopulate the table
 			$("tbody tr").each(function(i){
