@@ -195,7 +195,7 @@ newdata$time <- newdata$time+2
 newdata$ace <- "Yes"
 
 
-pred <- predRiskScore(data = newdata)
+pred <- predRiskScore(input = newdata)
 
 write.csv(newdata, file="C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackages/testdata.csv", row.names = FALSE)
 
