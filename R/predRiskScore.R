@@ -40,8 +40,20 @@ predRiskScore <- function(input = NULL){
   n <- nme%in%names(newdata)
   if(!all(n)) stop("some variables in the test data are not in the model!")
   
-  colclass <- sapply(newdata[, nme], class)
-  if(!all(colclass%in%model$col.class[nme])) stop("provide the correct type of variables in the test data")
+  n <- sum(complete.cases(newdata)) 
+  if(n != nrow(newdata)) stop("no missing values in test data")
+  
+  newdata$age <- as.numeric(newdata$age)
+  newdata$time <- as.numeric(newdata$time)
+  newdata$bsa <- as.numeric(newdata$bsa)
+  newdata$creat <- as.numeric(newdata$creat)
+  newdata$sex <- factor(newdata$sex, levels = levels(dat$sex))
+  newdata$acei <- factor(newdata$acei, levels = levels(dat$acei))
+  newdata$dm <- factor(newdata$dm, levels = levels(dat$dm))
+  newdata$hc <- factor(newdata$hc, levels = levels(dat$hc))
+  newdata$prenyha <- factor(newdata$prenyha, levels = levels(dat$prenyha))
+  
+#  if(!all(colclass%in%model$col.class[nme])) stop("training and test data differ in some variable types")
  
 ## get data for patient(s) in the training data and replace new features in newdata 
   dd <- dat[dat$id%in%newdata$id, ] 
@@ -51,7 +63,7 @@ predRiskScore <- function(input = NULL){
        max(xx$time)  <= max(newdata$time[newdata$id%in%unique(xx$id)])
   }))
   
-  if(!all(tme)) stop("follow up times in new data must greater than or equal to that in training data")
+  if(!all(tme)) stop("follow up times for each patient in test data must be greater than or equal to that in training data") ## not sure if we'll need this test 
   
   newdata$time <- round(newdata$time)
   
