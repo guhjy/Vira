@@ -218,6 +218,11 @@ ocpu_start_app("nguforche/Vira")
 
 
 
+curl http://localhost:5656/ocpu/apps/nguforche/Vira/R/predRiskScore/json \
+-H "Content-Type: application/json" \
+-d '{"input" : [ {"id":190,"age":68.726,"sex":"Male","time":2.9123,"acei":"Yes","dm":"No","creat":114,"hc":"Absent","prenyha":"I-II","bsa":2.02},{"id":190,"age":69.7233,"sex":"Male","time":3.9096,"acei":"Yes","dm":"No","creat":130,"hc":"Treated","prenyha":"I-II","bsa":2.02} ]}'
+
+
 
 
 

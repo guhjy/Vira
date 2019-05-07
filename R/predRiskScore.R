@@ -63,7 +63,7 @@ predRiskScore <- function(input = NULL){
   dd <- dat[dat$id%in%newdata$id, ] 
 
   ##  for each patient in the newdata, follow up time should be more than follow up time used for training   
-  tme <- unlist(dlply(dd, .variables = id, .fun = function(xx) {
+  tme <- unlist(plyr::dlply(dd, .variables = id, .fun = function(xx) {
        max(xx$time)  <= max(newdata$time[newdata$id%in%unique(xx$id)])
   }))
   
@@ -71,7 +71,7 @@ predRiskScore <- function(input = NULL){
   
   newdata$time <- round(newdata$time)
   
-  newdata <- ddply(dd,  .variables = "id", .fun = function(xx){
+  newdata <- plyr::ddply(dd,  .variables = "id", .fun = function(xx){
     xx <- xx[order(xx$time, decreasing = TRUE), ]
     yy <- tail(xx, 1)
     tab <- subset(newdata, id%in%unique(xx$id))
