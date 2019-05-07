@@ -7,6 +7,8 @@ Authors@R: person("Che", "Ngufor", email = "Ngufor.Che@mayo.edu",
 Maintainer: Che Ngufor <Ngufor.Chen@mayo.edu>
 Description: An AI- X-reality application.  
 Depends: R (>= 3.1.2)
+Imports: PresenceAbsence, caret, rpart, lme4, rpart.plot, partykit,
+        Matrix, vcd, grid, plyr, inTrees, gbm, DMwR, kernlab
 License: GPL(>= 3)
 LazyData: false
 NeedsCompilation: no

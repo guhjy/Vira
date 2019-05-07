@@ -14,6 +14,8 @@
 #' @param prenyha preoperative New York Heart Association (NYHA): 1 = I/II; 3 = III/IV 
 #' @param bsa preoperative body surface area.
 
+#' @importFrom plyr dlply
+#
 #' @export
 predRiskScore <- function(input = NULL){
   #input can either be, NULL, data frame, or csv file 	

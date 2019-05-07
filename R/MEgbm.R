@@ -42,7 +42,7 @@
 #' Mixed Effect Machine Learning: a framework for predicting longitudinal change in hemoglobin A1c,
 #' in Journal of Biomedical Informatics, 2018 
 
-## #' @import lme4 caret partykit inTrees gbm
+#' @import lme4 caret partykit inTrees gbm
 NULL 
 #
 #' @rdname MEgbm  

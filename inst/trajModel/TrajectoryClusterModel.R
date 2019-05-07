@@ -109,9 +109,9 @@ save(model, file = "C:/Users/m133937/Dropbox/Research/VirtualReality/computation
 
 
 ### plot 
-d1 <- model$data[, c("id", "cluster", "time", "traj")]
-d2 <- model$data[, c("id", "cluster", "time",  "smooth.traj")]
-names(d2) <- c("id", "cluster", "time",  "traj")
+d1 <- model$data[, c("id", "cluster", "time", "risk")]
+d2 <- model$data[, c("id", "cluster", "time",  "smoothRisk")]
+names(d2) <- c("id", "cluster", "time",  "risk")
 d2$cluster <- d2$cluster + 3
 
 d1$id <- factor(d1$id)
@@ -123,7 +123,7 @@ d <- rbind(d1, d2)
 d$id <- factor(d$id)
 d$cluster <- factor(d$cluster)
 
-col = col2hex(c("darkblue","darkred",   "darkgreen", "purple"))
+col = col2hex(c("darkgreen", "darkblue", "darkred",  "purple"))
 col1 <- c(makeTransparent(col[1], alpha = 20), makeTransparent(col[2], alpha=20), 
           makeTransparent(col[3], alpha = 20))
 col2 <- c(col1, col)
@@ -131,8 +131,8 @@ col2 <- c(col1, col)
 
 png(filename ="C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackages/Vira/inst/traj.png", width = 1050, height = 850)
 pp <- ggplot() + 
-  geom_line(data = d1, aes(x = time, y = traj, group = id, color = cluster, size = cluster)) +  
-  geom_line(data = d2, aes(x = time, y = traj, group = id, color = cluster, size = cluster )) +
+  geom_line(data = d1, aes(x = time, y = risk, group = id, color = cluster, size = cluster)) +  
+  geom_line(data = d2, aes(x = time, y = risk, group = id, color = cluster, size = cluster )) +
   scale_size_manual(values = c(1, 1, 1, 1.5, 1.5, 1.5)) + 
   geom_jitter() + 
   guides(colour = FALSE, size = FALSE) +scale_x_continuous(name="Time (years from surgery)",breaks=0:11) + 

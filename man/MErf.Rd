@@ -6,17 +6,15 @@
 \title{Mixed Effect random forest}
 \usage{
 MErfRules(form, dat, groups = NULL, rand.vars = "1", para = NULL,
-  tol = 0.00001, max.iter = 100, include.RE = FALSE,
-  verbose = FALSE, maxdepth = 5,
-  glmer.Control = glmerControl(optimizer = "bobyqa", check.nobs.vs.nRE =
-  "ignore", check.nobs.vs.nlev = "ignore"), nAGQ = 0,
+  tol = 1e-05, max.iter = 100, include.RE = FALSE, verbose = FALSE,
+  maxdepth = 5, glmer.Control = glmerControl(optimizer = "bobyqa",
+  check.nobs.vs.nRE = "ignore", check.nobs.vs.nlev = "ignore"), nAGQ = 0,
   likelihoodCheck = TRUE, K = 3, decay = 0.05, ...)
 
 MErfRules(form, dat, groups = NULL, rand.vars = "1", para = NULL,
-  tol = 0.00001, max.iter = 100, include.RE = FALSE,
-  verbose = FALSE, maxdepth = 5,
-  glmer.Control = glmerControl(optimizer = "bobyqa", check.nobs.vs.nRE =
-  "ignore", check.nobs.vs.nlev = "ignore"), nAGQ = 0,
+  tol = 1e-05, max.iter = 100, include.RE = FALSE, verbose = FALSE,
+  maxdepth = 5, glmer.Control = glmerControl(optimizer = "bobyqa",
+  check.nobs.vs.nRE = "ignore", check.nobs.vs.nlev = "ignore"), nAGQ = 0,
   likelihoodCheck = TRUE, K = 3, decay = 0.05, ...)
 }
 \arguments{

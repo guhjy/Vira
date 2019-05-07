@@ -20,14 +20,15 @@
 #' @param \dots Further arguments passed to or from other methods.
 # 
 #' @author  Che Ngufor Ngufor.Che@@mayo.edu
-## #' @import rpart.plot partykit Matrix 
+
+#' @import rpart.plot partykit Matrix 
  
-## #' @importFrom PresenceAbsence optimal.thresholds
-## #' @importFrom PresenceAbsence presence.absence.accuracy
-## #' @importFrom PresenceAbsence predicted.prevalence
-## #' @importFrom plyr dlply
-## #' @importFrom caret confusionMatrix
-## #' @importFrom DMwR regr.eval
+#' @importFrom PresenceAbsence optimal.thresholds
+#' @importFrom PresenceAbsence presence.absence.accuracy
+#' @importFrom PresenceAbsence predicted.prevalence
+#' @importFrom plyr dlply
+#' @importFrom caret confusionMatrix
+
 # 
 NULL 
 #
