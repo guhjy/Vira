@@ -197,7 +197,7 @@ newdata$ace <- "Yes"
 
 pred <- predRiskScore(input = newdata)
 
-write.csv(newdata, file="C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackages/testdata.csv", row.names = FALSE)
+write.csv(newdata, file="C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackages/Vira/inst/trajModel/testdata.csv", row.names = FALSE)
 
 
 
