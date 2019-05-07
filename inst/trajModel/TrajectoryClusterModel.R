@@ -202,3 +202,26 @@ write.csv(newdata, file="C:/Users/m133937/Dropbox/Research/VirtualReality/comput
 
 
 
+library(opencpu)
+
+### push package to github and install with 
+
+### first uninstall package - not sure if this step is required
+remove_apps(repo="nguforche/Vira")
+
+## install package from repository - using github - package must be public? 
+install_apps(repo="nguforche/Vira")
+
+### run 
+## update, install and run
+ocpu_start_app("nguforche/Vira")
+
+
+
+
+
+
+
+
+
+
