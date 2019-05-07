@@ -49,7 +49,7 @@ predRiskScore <- function(input = NULL){
   newdata$creat <- as.numeric(newdata$creat)
   newdata$sex <- factor(newdata$sex, levels = levels(dat$sex))
   newdata$acei <- factor(newdata$acei, levels = levels(dat$acei))
-  newdata$dm <- factor(newdata$dm, levels = levels(dat$dm))
+  newdata$dm <-  factor(newdata$dm, levels = levels(dat$dm))
   newdata$hc <- factor(newdata$hc, levels = levels(dat$hc))
   newdata$prenyha <- factor(newdata$prenyha, levels = levels(dat$prenyha))
   
