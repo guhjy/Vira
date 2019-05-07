@@ -40,9 +40,9 @@ predRiskScore <- function(input = NULL){
   n <- nme%in%names(newdata)
   if(!all(n)) stop("some variables in the test data are not in the model!")
   
-  n <- sum(complete.cases(newdata)) 
+  n <- sum(sapply(newdata[, nme], function(xx) sum(is.na(xx)))) 
   
-  if(n != NROW(newdata)) stop("no missing values in test data")
+  if(n != 0) stop("no missing values in test data")
   
   newdata$age <- as.numeric(newdata$age)
   newdata$time <- as.numeric(newdata$time)
