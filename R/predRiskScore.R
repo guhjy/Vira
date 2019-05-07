@@ -45,7 +45,7 @@ predRiskScore <- function(input = NULL){
   
   n <- sum(sapply(newdata[, nme], function(xx) sum(is.na(xx)))) 
   
-  if(n != 0) stop("no missing values in test data")
+#  if(n != 0) stop("no missing values in test data")
   
   newdata$age <- as.numeric(newdata$age)
   newdata$time <- as.numeric(newdata$time)
