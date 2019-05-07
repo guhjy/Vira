@@ -7,6 +7,7 @@ $(function(){
 		var data = [];
 		$("tbody tr").each(function(i){
 			data[i] = {
+			  id : parseInt($(this).find(".idfield").val()),
 				age : parseFloat($(this).find(".agefield").val()),
 				sex : $(this).find(".sexfield").val(),
 				time : parseFloat($(this).find(".timefield").val()),
@@ -23,6 +24,7 @@ $(function(){
 		var req = ocpu.rpc("predRiskScore", {input : data}, function(output){
 			//repopulate the table
 			$("tbody tr").each(function(i){
+			  $(this).find(".idfield").val(output[i].id);
 				$(this).find(".agefield").val(output[i].age);
 				$(this).find(".sexfield").val(output[i].sex);
 				$(this).find(".timefield").val(output[i].time);
@@ -67,7 +69,8 @@ $(function(){
 	//this is just to create a table
 	function addrow(){
 		$("tbody").append(
-	'<tr> <td> <div class="form-group"> <input type="number" min="20" max="80" class="form-control agefield" placeholder="Age"></div> </td>' + 
+	'<tr> <td> <div class="form-group"> <input type="number" min="1" max="256" class="form-control idfield" placeholder="PID"></div> </td>'+
+	'<td> <div class="form-group"> <input type="number" min="20" max="80" class="form-control agefield" placeholder="Age"></div> </td>' + 
 	'<td> <div class="form-group"> <select class="form-control sexfield"> <option>Male</option> <option>Female</option></select> </div> </td>' +  
 	'<td> <div class="form-group"> <input type="number" min="0" max="12" class="form-control timefield" placeholder="Time"></div> </td>' + 
 	'<td> <div class="form-group"> <select class="form-control aceifield"> <option>Yes</option> <option>No</option></select></div> </td>' + 

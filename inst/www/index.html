@@ -39,7 +39,7 @@ curl https://localhost:5656/ocpu/apps/nguforche/Vira/R/predRiskScore/json \
     <form class="form-inline" role="form">
       <table class="table table-bordered">
         <thead>
-          <tr><th>Age</th><th>Sex</th><th>Time</th><th>ACE inhibitor</th><th>Diabetes</th><th>Creatinine</th><th>High cholesterol</th><th>NYHA</th><th>BSA</th><th>Risk</th><th>Trajectory</th></tr>
+          <tr><th>PID</th><th>Age</th><th>Sex</th><th>Time</th><th>ACE inhibitor</th><th>Diabetes</th><th>Creatinine</th><th>High cholesterol</th><th>NYHA</th><th>BSA</th><th>Risk</th><th>Trajectory</th></tr>
         </thead>
         <tbody>
         </tbody>
@@ -53,7 +53,7 @@ curl https://localhost:5656/ocpu/apps/nguforche/Vira/R/predRiskScore/json \
       <h2>Predict LVMI and trajectories using features in a CSV file</h2>
     </div>
 
-    <p>The scoring function accepts both interative data as well as a batch CSV input file. For bacth prediction, the CSV file must at least contain columns with values for <code>age, sex, acei, dm, hc</code>  <code>sex</code> (<a href="../trajModel/testdata.csv">example data</a>).</p>
+    <p>The scoring function accepts both interative data as well as a batch CSV input file. For bacth prediction, the CSV file must at least contain columns with values for <code>id, age, sex, acei, dm, creat, hc, prenyha, bsa</code>  (<a href="../trajModel/testdata.csv">example data</a>).</p>
 
     <form role="form">
       <div class="form-group">

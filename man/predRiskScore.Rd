@@ -4,7 +4,7 @@
 \alias{predRiskScore}
 \title{Score trajectory cluster model}
 \usage{
-predRiskScore(data = NULL)
+predRiskScore(input = NULL)
 }
 \arguments{
 \item{age}{patient age}

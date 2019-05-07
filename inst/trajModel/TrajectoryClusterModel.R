@@ -16,7 +16,7 @@ require(bayou)
 
 library(devtools)
 library(roxygen2)
-Rcode <- as.package("C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackage/Vira")
+Rcode <- as.package("C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackages/Vira")
 load_all(Rcode)
 document(Rcode)
 
@@ -105,7 +105,7 @@ model <- MEmixgbm(form = form, dat=dat, groups = id,  rand.vars= rand.vars,  par
                 max.iter =20, include.RE =FALSE, maxdepth=5, k=3, krange = 2:5, decay = 0.05)
 
 
-save(model, file = "C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackage/Vira/data/model.rda")
+save(model, file = "C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackages/Vira/data/model.rda")
 
 
 ### plot 
@@ -129,7 +129,7 @@ col1 <- c(makeTransparent(col[1], alpha = 20), makeTransparent(col[2], alpha=20)
 col2 <- c(col1, col)
 
 
-png(filename ="C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackage/Vira/inst/traj.png", width = 1050, height = 850)
+png(filename ="C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackages/Vira/inst/traj.png", width = 1050, height = 850)
 pp <- ggplot() + 
   geom_line(data = d1, aes(x = time, y = traj, group = id, color = cluster, size = cluster)) +  
   geom_line(data = d2, aes(x = time, y = traj, group = id, color = cluster, size = cluster )) +
@@ -197,7 +197,7 @@ newdata$ace <- "Yes"
 
 pred <- predRiskScore(data = newdata)
 
-write.csv(newdata, file="C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackage/testdata.csv", row.names = FALSE)
+write.csv(newdata, file="C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackages/testdata.csv", row.names = FALSE)
 
 
 
