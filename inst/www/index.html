@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Simple OpenCPU Scoring Application</title>
+  <link href="bootstrap.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+  <div class="container">
+    <h1>Vira: Virtual Inteligent Robot Assistant </h1>
+
+    <p>An  AI -  X-Reality  framework </p>
+    
+     <p>The <a href="../">Vira</a> risk scoring model includes a data object <a href="../data/model">model</a> and a <a href="../R/predRiskScore">scoring function</a> to predict increase in left ventricular mass index (LVMI). LVMI is considered increased if LVMI >134 g/m2 in male patients and LVMI >110 g/m2 in female patients, thus values in this range for both sex was considered as the positive class. Vira employs a mixture of mixeffect gradiant boosting machine (MEmixgbm) to compute individualized patient trajectories and group specific trajectores. The figure below shows three trajectory groups identified by MEmixgbm: a rapid, a stable then slowly increasing, and a decreasing longitudinal profile of LVMI over time:</p>
+ 
+    <img class="center-block img-rounded img-responsive" src="../trajModel/traj.png" height="500" width="500">
+    
+
+    <div class="page-header">
+      <h2>Scoring example with curl</h2>
+    </div>
+
+    <p>The <code>Vira</code> scoring function can be directly from the command line with <code>curl</code>:</p>
+
+    <pre class="highlight" id="curlcode">
+curl https://localhost:5656/ocpu/apps/nguforche/Vira/R/predRiskScore/json \
+-H "Content-Type: application/json" \
+-d '{"input" : [ {"id":190,"age":68.726,"sex":"Male","time":2.9123,"acei":"Yes","dm":"No","creat":114,"hc":"Absent","prenyha":"I-II","bsa":2.02},{"id":190,"age":69.7233,"sex":"Male","time":3.9096,"acei":"Yes","dm":"No","creat":130,"hc":"Treated","prenyha":"I-II","bsa":2.02} ]}'
+</pre>
+
+    <div class="page-header">
+      <h2>Predict longitudinal increase in LVMI and trajectory groups </h2>
+    </div>
+
+    <form class="form-inline" role="form">
+      <table class="table table-bordered">
+        <thead>
+          <tr><th>Age</th><th>Sex</th><th>Time</th><th>ACE inhibitor</th><th>Diabetes</th><th>Creatinine</th><th>High cholesterol</th><th>NYHA</th><th>BSA</th><th>Risk</th><th>Trajectory</th></tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <button type="button" id="scorebutton" class="btn btn-primary btn-lg">Predict</button>
+      </div>
+    </form>
+
+    <div class="page-header">
+      <h2>Predict LVMI and trajectories using features in a CSV file</h2>
+    </div>
+
+    <p>The scoring function accepts both interative data as well as a batch CSV input file. For bacth prediction, the CSV file must at least contain columns with values for <code>age, sex, acei, dm, hc</code>  <code>sex</code> (<a href="../trajModel/testdata.csv">example data</a>).</p>
+
+    <form role="form">
+      <div class="form-group">
+        <img src="spinner.gif" class="spinner" style="display:none;" />
+        <input class="btn btn-primary btn-lg" type="file" id="csvfile"> 
+        <br> 
+        <a class="btn btn-success btn-lg hide" target="_blank" id="outputcsv">Output CSV</a>
+      </div>
+      
+    </form>
+
+  
+
+  </div>
+  
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <script src="opencpu.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

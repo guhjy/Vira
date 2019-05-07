@@ -1,0 +1,13 @@
+Package: Vira
+Type: Package
+Title: Virtual Inteligent Robot Assistant 
+Version: 0.1
+Authors@R: person("Che", "Ngufor", email = "Ngufor.Che@mayo.edu",
+    role = c("aut", "cre"))
+Maintainer: Che Ngufor <Ngufor.Chen@mayo.edu>
+Description: An AI- X-reality application.  
+Depends: R (>= 3.1.2)
+License: GPL(>= 3)
+LazyData: false
+NeedsCompilation: no
+RoxygenNote: 6.1.1
