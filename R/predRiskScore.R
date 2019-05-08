@@ -34,19 +34,28 @@ predRiskScore <- function(input = NULL){
           pred <- predict(model, newdata= newdata) 
           newdata$risk <- pred$Y.star 
           ## get clustering for patient(s) 
-          newdata <- plyr::join(x=newdata, y = model$data[, c("id", "cluster", "risk", "meanRisk", "smoothRisk")], by = "id", type = "left")
-          
+          newdata <- plyr::ddply(newdata, .variables = "id", .fun = function(xx) {
+                       xx$cluster <- unique(subset(model$data, id == unique(xx$id))$cluster) 
+                       xx
+                       })
           newdata$time <- round(newdata$time)
-          newdata <- plyr::ddply(newdata,  .variables = "id", .fun = function(xx){
-            yy <- xx[order(xx$time, decreasing = TRUE), ]
-            pred <- predict(model, newdata= yy) 
-            yy$risk <- pred$Y.star  
-            yy$meanRisk <- (yy$meanRisk +  yy$risk)/2
-            k <- unique(yy$cluster)
-            sm <- model$smooth[[k]]$smooth 
-            yy$smoothRisk <- (yy$smoothRisk + predict(sm, x= yy$time)$y)/2  
-            yy 
+          ### mean of trajectory cluster at follow up time 
+          mn <- ddply(newdata, .variables = c("time", "cluster"), .fun = function(xx) {
+            xx$meanRisk = mean(xx$risk, na.rm = TRUE)
+            xx
           })
+          
+           ### data for VR 
+          newdata <- ddply(mn, .variables = "cluster", .fun = function(xx){
+            k <- unique(xx$cluster)
+            sm <- model$smooth[[k]]$smooth
+            sp <- predict(sm, x= xx$time)
+            ddply(xx, .variables = "time", .fun = function(yy){
+              ix <- which(sp$x%in%unique(yy$time))
+              yy$smoothRisk = sp$y[ix]
+              yy
+            })})
+          
           return(newdata)
         } else {
                   
