@@ -55,7 +55,7 @@ predRiskScore <- function(input = NULL){
               yy$smoothRisk = sp$y[ix]
               yy
             })})
-          
+          newdata = newdata[order(newdata$id), ]
           return(newdata)
         } else {
                   
