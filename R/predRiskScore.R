@@ -34,7 +34,7 @@ predRiskScore <- function(input = NULL){
           pred <- predict(model, newdata= newdata) 
           newdata$risk <- pred$Y.star 
           ## get clustering for patient(s) 
-          newdata <- join(x=newdata, y = model$data[, c("id", "cluster", "risk", "meanRisk", "smoothRisk")], by = "id", type = "left")
+          newdata <- plyr::join(x=newdata, y = model$data[, c("id", "cluster", "risk", "meanRisk", "smoothRisk")], by = "id", type = "left")
           
           newdata$time <- round(newdata$time)
           newdata <- plyr::ddply(newdata,  .variables = "id", .fun = function(xx){
