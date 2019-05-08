@@ -15,7 +15,7 @@
 
     <p>An  AI -  X-Reality  framework </p>
     
-     <p>The <a href="../">Vira</a> risk scoring model includes a data object <a href="../data/model">model</a> and a <a href="../R/predRiskScore">scoring function</a> to predict increase in left ventricular mass index (LVMI). LVMI is considered increased if LVMI >134 g/m2 in male patients and LVMI >110 g/m2 in female patients, thus values in this range for both sex was considered as the positive class. Vira employs a mixture of mixeffect gradiant boosting machine (MEmixgbm) to compute individualized patient trajectories and group specific trajectores. The figure below shows three trajectory groups identified by MEmixgbm: a rapid, a stable then slowly increasing, and a decreasing longitudinal profile of LVMI over time:</p>
+     <p>This is the AI component of <a href="../">Vira</a>; a risk scoring engine that includes a data object <a href="../data/model">model</a> and a <a href="../R/predRiskScore"> risk scoring function</a> for predicting increase in left ventricular mass index (LVMI). LVMI is considered increased if LVMI >134 g/m2 in male patients and LVMI >110 g/m2 in female patients, thus values in this range for both sex was considered as the positive class. Vira employs a mixture of mixeffect gradiant boosting machine (MEmixgbm) to compute individualized patient trajectories and group specific trajectores. The figure below shows three trajectory groups identified by MEmixgbm: a rapid, a stable then slowly increasing, and a decreasing longitudinal profile of LVMI over time:</p>
  
     <img class="center-block img-rounded img-responsive" src="../trajModel/traj.png" height="500" width="500">
     
@@ -53,7 +53,7 @@ curl https://localhost:5656/ocpu/apps/nguforche/Vira/R/predRiskScore/json \
       <h2>Predict LVMI and trajectories using features in a CSV file</h2>
     </div>
 
-    <p>The scoring function accepts both interative data as well as a batch CSV input file. For bacth prediction, the CSV file must at least contain columns with values for <code>id, age, sex, acei, dm, creat, hc, prenyha, bsa</code>  (<a href="../trajModel/testdata.csv">example data</a>).</p>
+    <p>The scoring function accepts both interative data as well as a batch CSV input file. The interactive prediction can be used only for the following set of featurs: <code> age, sex, time, acei, dm, creat, hc, prenyha, bsa</code>, and must include the patient id (PID) <code> id </code> and the follow up time for each patient must be at least larger than the maximum follow up time for the patient used for training. For batch prediction, the CSV file must contain all the features used for training. See <a href="../trajModel/testdata.csv"> for example test data</a>).</p>
 
     <form role="form">
       <div class="form-group">

@@ -188,11 +188,11 @@ pred <- predRiskScore()
 
 
 nme <- c("age", "sex", "time","acei", "dm", "creat", "hc", "prenyha", "bsa")
-ix <- sample(unique(dat$id), 1)
-newdata <- tail(subset(dat, id %in% ix)[, c("id", nme)], 2) 
-newdata$age <- newdata$age + 10
-newdata$time <- newdata$time+2 
-newdata$ace <- "Yes"
+ix <- sample(unique(dat$id), 5)
+newdata <- subset(dat, id %in% ix)
+#newdata$age <- newdata$age + 10
+#newdata$time <- newdata$time+2 
+#newdata$ace <- "Yes"
 
 
 pred <- predRiskScore(input = newdata)

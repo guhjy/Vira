@@ -6,23 +6,25 @@
 \title{Mixed Effect GBM}
 \usage{
 MEgbm(X, Y, groups = NULL, rand.vars = "1", para = NULL,
-  lme.family = binomial, tol = 1e-05, max.iter = 100,
+  lme.family = binomial, tol = 0.00001, max.iter = 100,
   include.RE = TRUE, verbose = FALSE, likelihoodCheck = TRUE, ...)
 
 MEgbm(X, Y, groups = NULL, rand.vars = "1", para = NULL,
-  lme.family = binomial, tol = 1e-05, max.iter = 100,
+  lme.family = binomial, tol = 0.00001, max.iter = 100,
   include.RE = TRUE, verbose = FALSE, likelihoodCheck = TRUE, ...)
 
 MEgbmRules(form, dat, groups = NULL, rand.vars = "1", para = NULL,
-  tol = 1e-05, max.iter = 100, include.RE = FALSE, verbose = FALSE,
-  maxdepth = 5, glmer.Control = glmerControl(optimizer = "bobyqa",
-  check.nobs.vs.nRE = "ignore", check.nobs.vs.nlev = "ignore"), nAGQ = 0,
+  tol = 0.00001, max.iter = 100, include.RE = FALSE,
+  verbose = FALSE, maxdepth = 5,
+  glmer.Control = glmerControl(optimizer = "bobyqa", check.nobs.vs.nRE =
+  "ignore", check.nobs.vs.nlev = "ignore"), nAGQ = 0,
   likelihoodCheck = TRUE, K = 3, decay = 0.05, ...)
 
 MEgbmRules(form, dat, groups = NULL, rand.vars = "1", para = NULL,
-  tol = 1e-05, max.iter = 100, include.RE = FALSE, verbose = FALSE,
-  maxdepth = 5, glmer.Control = glmerControl(optimizer = "bobyqa",
-  check.nobs.vs.nRE = "ignore", check.nobs.vs.nlev = "ignore"), nAGQ = 0,
+  tol = 0.00001, max.iter = 100, include.RE = FALSE,
+  verbose = FALSE, maxdepth = 5,
+  glmer.Control = glmerControl(optimizer = "bobyqa", check.nobs.vs.nRE =
+  "ignore", check.nobs.vs.nlev = "ignore"), nAGQ = 0,
   likelihoodCheck = TRUE, K = 3, decay = 0.05, ...)
 }
 \arguments{
