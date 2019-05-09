@@ -85,13 +85,12 @@ predRiskScore <- function(input = NULL){
     ## get data for patient(s) in the training data and replace new features in newdata 
       dd <- dat[dat$id%in%newdata$id, ] 
       ##  for each patient in the newdata, follow up time should be more than follow up time used for training   
-      tme <- unlist(plyr::dlply(dd, .variables = id, .fun = function(xx) {
-           max(xx$time)  <= max(newdata$time[newdata$id%in%unique(xx$id)])
-      }))
-      if(!all(tme)) stop("follow up times for each patient in test data must be greater than or equal to that in training data") ## not sure if we'll need this test 
+#      tme <- unlist(plyr::dlply(dd, .variables = id, .fun = function(xx) {
+#           max(xx$time)  <= max(newdata$time[newdata$id%in%unique(xx$id)])
+#      }))
+#      if(!all(tme)) stop("follow up times for each patient in test data must be greater than or equal to that in training data") ## not sure if we'll need this test 
       
       newdata$time <- round(newdata$time)
-      
       newdata <- plyr::ddply(dd,  .variables = "id", .fun = function(xx){
         xx <- xx[order(xx$time, decreasing = TRUE), ]
         yy <- tail(xx, 1)
