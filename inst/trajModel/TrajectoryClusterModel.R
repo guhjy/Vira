@@ -129,7 +129,7 @@ col1 <- c(makeTransparent(col[1], alpha = 20), makeTransparent(col[2], alpha=20)
 col2 <- c(col1, col)
 
 
-png(filename ="C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackages/Vira/inst/trajModel/traj.png", width = 1050, height = 850)
+png(filename ="C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackages/Vira/inst/trajModel/trajectories.png", width = 1050, height = 850)
 pp <- ggplot() + 
   geom_line(data = d1, aes(x = time, y = risk, group = id, color = cluster, size = cluster)) +  
   geom_line(data = d2, aes(x = time, y = risk, group = id, color = cluster, size = cluster )) +
@@ -157,7 +157,7 @@ ip$id <- paste0("patient", ip$id)
 ip$cluster = "patient5"
 col3 <- c(col2, makeTransparent(col2hex("darkblue"), 150))
 
-png(filename ="C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackages/Vira/inst/trajModel/traj.png", width = 1050, height = 850)
+png(filename ="C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackages/Vira/inst/trajModel/trajectories.png", width = 1050, height = 850)
 pp <- ggplot() + 
   geom_line(data = d1, aes(x = time, y = risk, group = id, color = cluster, size = cluster)) +  
   geom_line(data = d2, aes(x = time, y = risk, group = id, color = cluster, size = cluster )) +
