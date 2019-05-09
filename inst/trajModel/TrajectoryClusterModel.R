@@ -151,24 +151,25 @@ dev.off()
 
 
 ### ass a highlight individual longitudinal profile of a single patient 
-ix <- sapply(d1$id, length)
-ip <- subset(d1, id==5)
+ix <- ddply(dat, .variables = "id",  NROW)
+ip <- subset(d1, id==26)
 ip$id <- paste0("patient", ip$id)
 ip$cluster = "patient5"
 col3 <- c(col2, makeTransparent(col2hex("darkblue"), 150))
 
+png(filename ="C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackages/Vira/inst/traj.png", width = 1050, height = 850)
 pp <- ggplot() + 
-  geom_line(data = d1, aes(x = time1, y = traj, group = id, color = cluster, size = cluster)) +  
-  geom_line(data = d2, aes(x = time1, y = traj, group = id, color = cluster, size = cluster )) +
-  geom_line(data = ip, aes(x = time1, y = traj, group = id, color = cluster, size = cluster)) +
+  geom_line(data = d1, aes(x = time, y = risk, group = id, color = cluster, size = cluster)) +  
+  geom_line(data = d2, aes(x = time, y = risk, group = id, color = cluster, size = cluster )) +
+  geom_line(data = ip, aes(x = time, y = risk, group = id, color = cluster, size = cluster)) +
   scale_size_manual(values = c(1, 1, 1, 1.5, 1.5, 1.5, 1.4)) + 
 #  geom_jitter() + 
   guides(colour = FALSE, size = FALSE) +
   scale_color_manual(values = col3 ) + 
   xlab("Time (years from AVR)") + ylab("Predicted continous risk function") + 
-  annotate("text", x = c(9.0, 10.0, 8.8, 9.5), y = c(-4.2, 0.5, 4.7, 1.6), 
+  annotate("text", x = c(9.0, 10.0, 8.8, 5.5), y = c(-4.4, 0.2, 4.7, 2.3), 
            label = c("Improving course", "Stable/Slow progression", "Rapid progression", 
-                     "Trajectory of an example patient"), size = 8) + 
+                     "Trajectory of PID = 26"), size = 8) + 
   theme(axis.title.x=element_text(size=22,face="bold"), 
         axis.title.y=element_text(size=22,face="bold"),
         legend.text = element_text(size=22,face="bold"), 
@@ -176,7 +177,7 @@ pp <- ggplot() +
         legend.title = element_text(size=22,face="bold"),
         axis.text.y = element_text(size = 22, face="bold",colour = "gray40"))
 print(pp)
-
+dev.off()
 
 
 
@@ -187,17 +188,19 @@ document(Rcode)
 pred <- predRiskScore()
 
 
-nme <- c("age", "sex", "time","acei", "dm", "creat", "hc", "prenyha", "bsa")
-ix <- sample(unique(dat$id), 5)
-newdata <- subset(dat, id %in% ix)
-#newdata$age <- newdata$age + 10
-#newdata$time <- newdata$time+2 
-#newdata$ace <- "Yes"
-
-
-pred <- predRiskScore(input = newdata)
-
+ix <- sample(unique(dat$id), 26)
+newdata <- subset(dat, id ==26)
 write.csv(newdata, file="C:/Users/m133937/Dropbox/Research/VirtualReality/computation/Rpackages/Vira/inst/trajModel/testdata.csv", row.names = FALSE)
+
+### convert to json 
+library(jsonlite)
+nme <- c("id","age", "sex", "time","acei", "dm", "creat", "hc", "prenyha", "bsa")
+x <- toJSON(tail(newdata[,nme],3))
+
+
+
+#pred <- predRiskScore(input = newdata)
+
 
 
 
